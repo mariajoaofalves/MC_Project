@@ -1,16 +1,24 @@
 package pt.ulisboa.tecnico.sise.insure.app.activities;
 
+import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
+
+import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
 
 public class NewClaimActivity extends AppCompatActivity {
 
@@ -23,6 +31,7 @@ public class NewClaimActivity extends AppCompatActivity {
     EditText editTextPlate;
     EditText editTextDate;
     EditText editTextDesc;
+    DatePickerDialog datePickerDialog;
     AlertDialog.Builder builder;
 
     @Override
@@ -36,6 +45,31 @@ public class NewClaimActivity extends AppCompatActivity {
         editTextDate = (EditText) findViewById(R.id.new_claim_date);
         editTextDesc = (EditText) findViewById(R.id.new_claim_desc);
         builder = new AlertDialog.Builder(this);
+
+        editTextDate.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(NewClaimActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                editTextDate.setText(dayOfMonth + "/"
+                                        + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             //    Bundle bundle = new Bundle();
             public void onClick(View v) {
@@ -65,12 +99,14 @@ public class NewClaimActivity extends AppCompatActivity {
                     Toast.makeText(v.getContext(), "Write claim description", Toast.LENGTH_LONG).show();
                     return;
                 }
-                //           bundle.putString("text", claimTitle);
-                //           bundle.putString("text", claimPlate);
-                //           bundle.putString("text", claimDate);
-                //           bundle.putString("text", claimDesc);
-                //create dialog box
-                builder.setMessage("Your claim was successfully created! We will take care of it as soon as possible" + "\n" + claimTitle )
+
+                // return an intent containing the title and body of the new note
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, claimTitle);
+                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESC, claimDesc);
+                setResult(Activity.RESULT_OK, resultIntent);
+
+                builder.setMessage("Your claim was successfully created! We will take care of it as soon as possible" + "\n" + claimTitle)
                         .setCancelable(false)
                         .setNegativeButton("Back", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -85,6 +121,7 @@ public class NewClaimActivity extends AppCompatActivity {
                 //Setting the title manually
                 alert.setTitle("New Insurance Claim Creation");
                 alert.show();
+
             }
 
         });
