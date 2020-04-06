@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">AutoInSureWSApp</string>
+    <string name="password">Password</string>
+    <string name="welcome_to_insure">Welcome to InSure</string>
+    <string name="username">Username</string>
+    <string name="btn_login">Login</string>
+    <string name="authentication">Authentication</string>
+    <string name="btn_logout">Logout</string>
+
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="new_claim_insurance">New Insurance Claim</string>
+    <string name="new_claim_insurance_ind">Create New Insurance Claim</string>
+    <string name="new_claim_back">Back</string>
+    <string name="new_claim_create">Create</string>
+    <string name="new_claim_insured">Profile</string>
+    <string name="new_claim_insured_info">Insured Information</string>
+
+    <string name="insurance_claim_history">Claim History</string>
+    <string name="list_of_claims">List of Claims</string>
+    <string name="claim_one">Claim 1</string>
+    <string name="claim_two">Claim 2</string>
+    <string name="claim_hist_btn_back">Back</string>
+
+    <!--> Detailed Information of Claim <!-->
+    <string name="detailed_information_claim">Detailed Information of Claim</string>
+    <string name="claim_information">Claim Information</string>
+    <string name="claim_statuss">Claim Status</string>
+    <string name="title">Title</string>
+    <string name="claim_id">Claim Id</string>
+    <string name="issuing_date">Issuing Date</string>
+    <string name="plate">Plate</string>
+    <string name="claim_description">Claim Description</string>
+    <string name="detailed_inf_back">Back</string>
+
+
+</resources>

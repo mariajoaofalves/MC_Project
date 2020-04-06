@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="pt.ulisboa.tecnico.sise.insure.app.activities.InsuredProfileActivity">
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="63dp"
+            android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
+            android:text="@string/btn_logout"
+            app:layout_constraintBottom_toTopOf="@+id/new_claim_insurance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.878"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/insured"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="@string/new_claim_insured"
+            android:textColor="#040303"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.165" />
+        <View
+            android:layout_width="50mm"
+            android:layout_height="4dip"
+            android:background="#AAA5A5"
+            android:paddingBottom="10dip"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.224" />
+        <TextView
+            android:id="@+id/insured_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="@string/new_claim_insured_info"
+            android:textColor="#AAA5A5"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.256" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="379dp"
+            android:layout_height="329dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.871">
+            <EditText
+                android:id="@+id/insured_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textColor="#101010"
+                android:verticalScrollbarPosition="right" />
+            <EditText
+                android:id="@+id/insured_birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:hint="Birthdate"
+                android:inputType="number|textPersonName"
+                android:textColor="#101010" />
+            <EditText
+                android:id="@+id/insured_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:hint="Address"
+                android:inputType="date"
+                android:textColor="#101010" />
+            <EditText
+                android:id="@+id/insured_nif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:hint="Fiscal Number"
+                android:inputType="date"
+                android:textColor="#101010" />
+            <EditText
+                android:id="@+id/insured_policy_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/editTextBackground"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:hint="Policy Number"
+                android:inputType="date"
+                android:textColor="#101010" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/profile_btn_back"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@android:drawable/ic_menu_revert"
+            android:text="@string/new_claim_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.957" /><![CDATA[
+    >
+]]>
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

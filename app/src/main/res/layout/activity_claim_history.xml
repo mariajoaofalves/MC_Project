@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pt.ulisboa.tecnico.sise.insure.app.activities.ClaimHistoryActivity">
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_close_clear_cancel"
+        android:text="@string/btn_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <TextView
+        android:id="@+id/insurance_claim_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insurance_claim_history"
+        android:fontFamily="monospace"
+        android:textSize="30sp"
+        android:textColor="#040303"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_logout"
+        app:layout_constraintVertical_bias="0.866" />
+    <View
+        android:id="@+id/view2"
+        android:layout_width="50mm"
+        android:layout_height="4dip"
+        android:background="#AAA5A5"
+        android:paddingBottom="10dip"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
+    <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="335dp"
+            android:layout_height="227dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.595">
+        <Button
+            android:id="@+id/claim_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/claim_one" />
+        <Button
+            android:id="@+id/claim_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/claim_two" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/list_of_claims"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:text="@string/list_of_claims"
+        android:textColor="#AAA5A5"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.282" />
+
+    <Button
+        android:id="@+id/claim_hist_btn_back"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:layout_weight="1"
+        android:drawableLeft="@android:drawable/ic_menu_revert"
+        android:text="@string/claim_hist_btn_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
