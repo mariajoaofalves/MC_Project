@@ -44,8 +44,8 @@ public class WSAuthentication extends AsyncTask<String, String, Integer> {
             _globalState.setSessionId(sessionId);
             Toast.makeText(_login.getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(_login.getApplicationContext(), HomeActivity.class);
-            _login.getApplicationContext().startActivity(intent);
-            ((Activity) _login.getApplicationContext() ).finish();
+            //_login.getApplicationContext().startActivity(intent);
+            //((Activity) _login.getApplicationContext() ).finish();
         }else if(sessionId==0){
             Toast.makeText(_login.getApplicationContext(), "Login Failed! Wrong Password or Username! Please Try Again.", Toast.LENGTH_SHORT);
         } else{
