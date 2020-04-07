@@ -1,35 +1,47 @@
 package pt.ulisboa.tecnico.sise.insure.app.activities;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
+import pt.ulisboa.tecnico.sise.insure.app.WSAuthentication;
 
 public class AuthenticationActivity extends AppCompatActivity {
     public final static String TAG = "Insure_AuthenticationActivity";
-    private TextView resultView;
+
+    private Context context=this;
+
+    EditText editTextUsername;
+    EditText editTextPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
 
-            //Login Button
         final Button btn_login = findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Log.d("Insure", "Loggin Button Clicked");
-                Toast.makeText(btn_login.getContext(), "Login Successful!", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(AuthenticationActivity.this, HomeActivity.class);
-                startActivity(intent);
+        final GlobalState globalState = (GlobalState) getApplicationContext();
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                editTextUsername = (EditText) findViewById(R.id.Username);
+                editTextPassword = (EditText) findViewById(R.id.Password);
+                String username = editTextUsername.getText().toString();
+                String password = editTextPassword.getText().toString();
+                Log.d("Authentication", "Loggin Button Clicked");
+                new WSAuthentication(username,password, globalState,AuthenticationActivity.this ).execute();
             }
         });
 
     }
+
 
 }

@@ -9,7 +9,7 @@
 
 
     <android.support.design.widget.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/Password"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="120dp"
@@ -77,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputEditText"
+        app:layout_constraintTop_toTopOf="@+id/Username"
         app:layout_constraintVertical_bias="0.635" />
 
     <Button
@@ -96,13 +96,13 @@
         app:layout_constraintVertical_bias="0.927" />
 
     <android.support.design.widget.TextInputEditText
-        android:id="@+id/textInputEditText"
+        android:id="@+id/Username"
         android:layout_width="356dp"
         android:layout_height="wrap_content"
         android:hint="@string/username"
         android:fontFamily="monospace"
         android:textColor="#AAA5A5"
-        app:layout_constraintBottom_toTopOf="@+id/textInputEditText2"
+        app:layout_constraintBottom_toTopOf="@+id/Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"

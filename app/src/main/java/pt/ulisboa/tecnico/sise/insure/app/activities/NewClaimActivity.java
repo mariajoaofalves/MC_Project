@@ -112,7 +112,7 @@ public class NewClaimActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 //  Action for 'BACK' Button
                                 dialog.cancel();
-                                Intent intent = new Intent(NewClaimActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(NewClaimActivity.this, ClaimHistoryActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -148,7 +148,6 @@ public class NewClaimActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
     }
 }
