@@ -48,9 +48,9 @@ public class WSAuthentication extends AsyncTask<String, String, Integer> {
             _login.getApplicationContext().startActivity(intent);
             //((Activity) _login.getApplicationContext() ).finish();
         }else if(sessionId==0){
-            Toast.makeText(_login.getApplicationContext(), "Login Failed! Wrong Password or Username! Please Try Again.", Toast.LENGTH_SHORT);
+            Toast.makeText(_login.getApplicationContext(), "Login Failed! Wrong Password or Username! Please Try Again.", Toast.LENGTH_SHORT).show();
         } else{
-            Toast.makeText(_login.getApplicationContext(), "Server Connection Failed!", Toast.LENGTH_SHORT);
+            Toast.makeText(_login.getApplicationContext(), "Server Connection Failed!", Toast.LENGTH_SHORT).show();
         }
 
     }
