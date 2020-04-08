@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".ClaimDetailActivity"></activity>
         <activity android:name=".ClaimHistoryActivity" />
-        <activity android:name=".InsuredProfileActivity" />
+        <activity android:name=".InsuredProfileActivity"/>
         <activity android:name=".NewClaimActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".AuthenticationActivity">

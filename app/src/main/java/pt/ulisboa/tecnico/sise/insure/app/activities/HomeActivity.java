@@ -13,11 +13,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
+import pt.ulisboa.tecnico.sise.insure.app.WSLogout;
 import pt.ulisboa.tecnico.sise.insure.datamodel.ClaimItem;
 
 public class HomeActivity extends AppCompatActivity {
 
+    public final static String TAG = "HomeActivity";
     private ListView _listView;
     private ArrayList<ClaimItem> _claimList;
 
@@ -26,15 +29,20 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        final GlobalState globalState = (GlobalState) getApplicationContext();
+
             //Logout Button
         final Button btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Insure", "Logout Button Clicked");
-                Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(HomeActivity.this, AuthenticationActivity.class);
-                startActivity(intent);
+                Log.d(TAG, "Logout Button Clicked");
+                try {
+                    new WSLogout(globalState, HomeActivity.this).execute();
+                    Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -43,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         profile_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                  //Perform action on click
-                Log.d("Insure", "Profile Button Clicked");
+                Log.d(TAG, "Profile Button Clicked");
                 Intent intent = new Intent(HomeActivity.this, InsuredProfileActivity.class);
                 startActivity(intent);
             }
@@ -54,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         newinsuranceclaim_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Insure", "New Insurance Claim Button Clicked");
+                Log.d(TAG, "New Insurance Claim Button Clicked");
                 Intent intent = new Intent(HomeActivity.this, NewClaimActivity.class);
                 startActivity(intent);
             }
@@ -66,7 +74,7 @@ public class HomeActivity extends AppCompatActivity {
         home_btn_claimhistory.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Perform action on click
-                Log.d("Insure", "Insurance Claim History Button Clicked");
+                Log.d(TAG, "Insurance Claim History Button Clicked");
                 Intent intent = new Intent(HomeActivity.this, ClaimHistoryActivity.class);
                 startActivity(intent);
             }

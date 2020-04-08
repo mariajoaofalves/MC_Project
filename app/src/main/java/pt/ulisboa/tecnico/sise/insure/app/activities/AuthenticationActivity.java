@@ -13,9 +13,6 @@ import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.WSAuthentication;
 
 public class AuthenticationActivity extends AppCompatActivity {
-    public final static String TAG = "Insure_AuthenticationActivity";
-
-    private Context context=this;
 
     EditText editTextUsername;
     EditText editTextPassword;

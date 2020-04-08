@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="pt.ulisboa.tecnico.sise.insure.app.activities.ClaimHistoryActivity">
-
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="115dp"
@@ -18,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
-
     <TextView
         android:id="@+id/insurance_claim_history"
         android:layout_width="wrap_content"
@@ -48,19 +46,22 @@
 
     <ListView
         android:id="@+id/list_claim_list"
-        android:layout_width="271dp"
-        android:layout_height="374dp"
+        android:layout_width="354dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="16dp"
         android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/claim_hist_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_of_claims" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/list_of_claims"
+        app:layout_constraintVertical_bias="0.284" />
     <TextView
         android:id="@+id/list_of_claims"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
         android:fontFamily="monospace"
         android:text="@string/list_of_claims"
         android:textColor="#AAA5A5"
@@ -68,20 +69,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
-
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.021" />
     <Button
         android:id="@+id/claim_hist_btn_back"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:drawableLeft="@android:drawable/ic_menu_revert"
         android:text="@string/claim_hist_btn_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </android.support.constraint.ConstraintLayout>

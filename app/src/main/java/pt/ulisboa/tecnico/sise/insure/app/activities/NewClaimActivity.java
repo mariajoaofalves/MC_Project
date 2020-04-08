@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
@@ -21,17 +22,18 @@ import android.app.AlertDialog;
 import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
 import pt.ulisboa.tecnico.sise.insure.app.WSAuthentication;
+import pt.ulisboa.tecnico.sise.insure.app.WSHelper;
+import pt.ulisboa.tecnico.sise.insure.app.WSLogout;
 import pt.ulisboa.tecnico.sise.insure.app.WSNewClaim;
 
 public class NewClaimActivity extends AppCompatActivity {
 
-
-    public final static String LOG_TAG = "Insure";
+    public final static String TAG = "NewClaim";
     private TextView resultView;
     private Button buttonCreate;
     private Button buttonBack;
     EditText editTextTitle;
-    EditText editTextPlate;
+    Spinner selectPlate;
     EditText editTextDate;
     EditText editTextDesc;
     DatePickerDialog datePickerDialog;
@@ -46,10 +48,9 @@ public class NewClaimActivity extends AppCompatActivity {
 
         buttonCreate = (Button) findViewById(R.id.new_claim_btn_create);
         editTextTitle = (EditText) findViewById(R.id.new_claim_title);
-        editTextPlate = (EditText) findViewById(R.id.new_claim_plate);
+        selectPlate = (Spinner) findViewById(R.id.new_claim_plate);
         editTextDate = (EditText) findViewById(R.id.new_claim_date);
         editTextDesc = (EditText) findViewById(R.id.new_claim_desc);
-
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -78,9 +79,9 @@ public class NewClaimActivity extends AppCompatActivity {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             //    Bundle bundle = new Bundle();
             public void onClick(View v) {
-                Log.d(LOG_TAG, "Create Button Clicked");
+                Log.d(TAG, "Create Button Clicked");
                 String claimTitle = editTextTitle.getText().toString();
-                String claimPlate = editTextPlate.getText().toString();
+                String claimPlate = selectPlate.getSelectedItem().toString();
                 String claimDate = editTextDate.getText().toString();
                 String claimDesc = editTextDesc.getText().toString();
                 // check the title
@@ -111,7 +112,7 @@ public class NewClaimActivity extends AppCompatActivity {
                 //setResult(Activity.RESULT_OK, resultIntent);
 
                 new WSNewClaim(claimTitle, claimDate, claimPlate, claimDesc, globalState, NewClaimActivity.this).execute();
-                Log.d("batata", "Login result => " + claimDate);
+                Log.d(TAG, "Login result => " + claimDate);
 
             }
 
@@ -122,10 +123,13 @@ public class NewClaimActivity extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d(LOG_TAG, "Logout Button Clicked");
-                Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(NewClaimActivity.this, AuthenticationActivity.class);
-                startActivity(intent);
+                Log.d(TAG, "Logout Button Clicked");
+                try {
+                    new WSLogout(globalState, NewClaimActivity.this).execute();
+                    Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -134,7 +138,7 @@ public class NewClaimActivity extends AppCompatActivity {
         new_claim_btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d(LOG_TAG, "Back Button Clicked");
+                Log.d(TAG, "Back Button Clicked");
                 Intent intent = new Intent(NewClaimActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

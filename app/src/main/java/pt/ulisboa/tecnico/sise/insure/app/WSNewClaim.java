@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import pt.ulisboa.tecnico.sise.insure.app.activities.ClaimHistoryActivity;
 import pt.ulisboa.tecnico.sise.insure.app.activities.NewClaimActivity;
 
 public class WSNewClaim extends AsyncTask<String, String, Boolean> {
@@ -54,7 +55,7 @@ public class WSNewClaim extends AsyncTask<String, String, Boolean> {
                     .setNegativeButton("Back", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
-                            Intent intent = new Intent(_newClaim, NewClaimActivity.class);
+                            Intent intent = new Intent(_newClaim, ClaimHistoryActivity.class);
                             Log.d("ClaimCreation", "faz o build => ");
                             _newClaim.startActivity(intent);
                             Log.d("ClaimCreation", "inicia nova activity => ");

@@ -11,9 +11,13 @@ import android.widget.Toast;
 
 import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.WSInsuredProfile;
+import pt.ulisboa.tecnico.sise.insure.app.WSLogout;
 import pt.ulisboa.tecnico.sise.insure.datamodel.Customer;
 
 public class InsuredProfileActivity extends AppCompatActivity {
+
+    public final static String TAG = "InsuredProfile";
+
     TextView viewTextName;
     TextView viewTextAdress;
     TextView viewTextBirthdate;
@@ -23,19 +27,30 @@ public class InsuredProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insured_profile);
+
         final GlobalState globalState = (GlobalState) getApplicationContext();
+
         viewTextName = (TextView)findViewById(R.id.name);
         viewTextAdress = (TextView)findViewById(R.id.adress);
         viewTextBirthdate = (TextView)findViewById(R.id.birthdate);
         viewTextFiscalNumber = (TextView)findViewById(R.id.nif);
         viewTextPolicyNumber = (TextView)findViewById(R.id.policynumber);
+
         new WSInsuredProfile( globalState, InsuredProfileActivity.this).execute();
+
         //Logout Button
         final Button btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Profile", "Logout Button Clicked");
+                Log.d(TAG, "Logout Button Clicked");
+                try {
+                    new WSLogout(globalState, InsuredProfileActivity.this).execute();
+                    Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
         });
         //Back Button
@@ -43,7 +58,7 @@ public class InsuredProfileActivity extends AppCompatActivity {
         profile_btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Profile", "Back Button Clicked");
+                Log.d(TAG, "Back Button Clicked");
                 Intent intent = new Intent(InsuredProfileActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
