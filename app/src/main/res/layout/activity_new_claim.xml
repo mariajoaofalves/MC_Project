@@ -102,12 +102,14 @@
             <Spinner
                 android:id="@+id/new_claim_plate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:background="?attr/editTextBackground"
+                android:dropDownWidth="wrap_content"
                 android:ems="10"
                 android:fontFamily="monospace"
                 android:hint="Plate Number"
                 android:inputType="number|textPersonName"
+                android:spinnerMode="dropdown"
                 android:textColor="#101010" />
 
             <EditText

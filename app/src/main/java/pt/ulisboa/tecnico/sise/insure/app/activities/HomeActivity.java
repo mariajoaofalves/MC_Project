@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
+import pt.ulisboa.tecnico.sise.insure.app.WSListPlates;
 import pt.ulisboa.tecnico.sise.insure.app.WSLogout;
 import pt.ulisboa.tecnico.sise.insure.datamodel.ClaimItem;
 
@@ -68,7 +69,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
             //Insurance Claim History Button
         final Button home_btn_claimhistory = findViewById(R.id.home_btn_claimhistory);
         home_btn_claimhistory.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         switch (requestCode) {
@@ -114,5 +114,5 @@ public class HomeActivity extends AppCompatActivity {
             default:
                 Log.d(InternalProtocol.LOG, "Internal error: unknown intent message.");
         }
-    }
+    }*/
 }

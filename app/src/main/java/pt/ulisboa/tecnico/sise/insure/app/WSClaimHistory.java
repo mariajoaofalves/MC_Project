@@ -11,6 +11,7 @@ import pt.ulisboa.tecnico.sise.insure.datamodel.ClaimItem;
 
 
     public class WSClaimHistory extends AsyncTask<Integer, String, List<ClaimItem>> {
+
         public final static String TAG = "ClaimHistory";
         Integer sessionId;
         GlobalState _globalState;

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,10 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
+import java.util.List;
+
 import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
 import pt.ulisboa.tecnico.sise.insure.app.WSAuthentication;
 import pt.ulisboa.tecnico.sise.insure.app.WSHelper;
+import pt.ulisboa.tecnico.sise.insure.app.WSListPlates;
 import pt.ulisboa.tecnico.sise.insure.app.WSLogout;
 import pt.ulisboa.tecnico.sise.insure.app.WSNewClaim;
 
@@ -45,6 +49,8 @@ public class NewClaimActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_claim);
 
         final GlobalState globalState = (GlobalState) getApplicationContext();
+
+        new WSListPlates(globalState, NewClaimActivity.this).execute();
 
         buttonCreate = (Button) findViewById(R.id.new_claim_btn_create);
         editTextTitle = (EditText) findViewById(R.id.new_claim_title);
@@ -144,6 +150,12 @@ public class NewClaimActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void UpdateListPlates(Iterable<String> plateList){
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, (List<String>) plateList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        selectPlate.setAdapter(adapter);
     }
 }
 

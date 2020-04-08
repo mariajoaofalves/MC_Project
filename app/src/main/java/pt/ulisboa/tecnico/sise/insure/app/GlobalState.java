@@ -49,4 +49,15 @@ public class GlobalState extends Application {
     public ClaimRecord getClaimRecord() {
         return claimRecord;
     }
+
+    private Iterable<String> plateList;
+
+    public Iterable<String> getPlateList() {
+        return plateList;
+    }
+
+    public void setPlateList(Iterable<String> plateList) {
+        this.plateList = plateList;
+    }
+
 }
