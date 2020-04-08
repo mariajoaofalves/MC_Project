@@ -56,8 +56,7 @@ public class WSNewClaim extends AsyncTask<String, String, Boolean> {
                             dialog.cancel();
                             Intent intent = new Intent(_newClaim, NewClaimActivity.class);
                             Log.d("ClaimCreation", "faz o build => ");
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            _newClaim.getApplicationContext().startActivity(intent);
+                            _newClaim.startActivity(intent);
                             Log.d("ClaimCreation", "inicia nova activity => ");
                         }
                     });

@@ -30,21 +30,9 @@ public class ClaimHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_claim_history);
 
-        //Logout Button
-        final Button btn_logout = findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Log.d("Insure", "Logout Button Clicked");
-                Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ClaimHistoryActivity.this, AuthenticationActivity.class);
-                startActivity(intent);
-            }
-        });
-
         // place the note list in the application domain
-        //_claimList = new ArrayList<ClaimItem>();
-        GlobalState globalState = (GlobalState) getApplicationContext();
+        _claimList = new ArrayList<ClaimItem>();
+        final GlobalState globalState = (GlobalState) getApplicationContext();
         //List<ClaimItem> claimList =
         globalState.set_claimList(_claimList);
 
@@ -78,6 +66,18 @@ public class ClaimHistoryActivity extends AppCompatActivity {
                 Log.d("Insure", "Back Button Clicked");
                 Intent intent = new Intent(ClaimHistoryActivity.this, HomeActivity.class);
                 startActivity(intent); // (se calhar falta isto) startActivityForResult(intent, InternalProtocol.CLAIM_INFORMATION_REQUEST);
+            }
+        });
+
+        //Logout Button
+        final Button btn_logout = findViewById(R.id.btn_logout);
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                Log.d("Insure", "Logout Button Clicked");
+                Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ClaimHistoryActivity.this, AuthenticationActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -8,7 +8,7 @@ public class InternalProtocol {
     public static final String KEY_NEW_CLAIM_TITLE = "CLAIM_TITLE";
     public static final String KEY_NEW_CLAIM_DESC  = "CLAIM_DESC";
     //
-    public static final Integer KEY_NEW_CLAIM_ID  = ;
+    public static final int KEY_NEW_CLAIM_ID  = 1;
     public static final String KEY_NEW_CLAIM_PLATE = "CLAIM_PLATE";
     public static final String KEY_NEW_CLAIM_DATE = "CLAIM_DATE";
 

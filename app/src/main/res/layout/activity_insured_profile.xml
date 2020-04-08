@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="pt.ulisboa.tecnico.sise.insure.app.activities.InsuredProfileActivity">
-
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="115dp"
@@ -23,7 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-
         <TextView
             android:id="@+id/insured"
             android:layout_width="wrap_content"
@@ -76,8 +74,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.871">
-            <EditText
-                android:id="@+id/insured_name"
+            <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/editTextBackground"
@@ -87,8 +85,8 @@
                 android:inputType="textPersonName"
                 android:textColor="#101010"
                 android:verticalScrollbarPosition="right" />
-            <EditText
-                android:id="@+id/insured_birthdate"
+            <TextView
+                android:id="@+id/birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/editTextBackground"
@@ -97,8 +95,8 @@
                 android:hint="Birthdate"
                 android:inputType="number|textPersonName"
                 android:textColor="#101010" />
-            <EditText
-                android:id="@+id/insured_address"
+            <TextView
+                android:id="@+id/adress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/editTextBackground"
@@ -107,8 +105,8 @@
                 android:hint="Address"
                 android:inputType="date"
                 android:textColor="#101010" />
-            <EditText
-                android:id="@+id/insured_nif"
+            <TextView
+                android:id="@+id/nif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/editTextBackground"
@@ -117,8 +115,8 @@
                 android:hint="Fiscal Number"
                 android:inputType="date"
                 android:textColor="#101010" />
-            <EditText
-                android:id="@+id/insured_policy_number"
+            <TextView
+                android:id="@+id/policynumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/editTextBackground"
@@ -128,7 +126,6 @@
                 android:inputType="date"
                 android:textColor="#101010" />
         </LinearLayout>
-
         <Button
             android:id="@+id/profile_btn_back"
             android:layout_width="110dp"

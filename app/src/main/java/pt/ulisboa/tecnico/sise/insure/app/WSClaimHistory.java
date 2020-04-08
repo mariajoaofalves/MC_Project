@@ -11,19 +11,18 @@ import pt.ulisboa.tecnico.sise.insure.datamodel.ClaimItem;
 public class WSClaimHistory extends AsyncTask<Integer, String, List<ClaimItem>> {
     public final static String TAG = "ClaimHistory";
     private int _sessionId;
+    GlobalState _globalState;
 
-    public WSClaimHistory(GlobalState.getSessionId()) {
-        _sessionId = GlobalState.getSessionId();
+    public WSClaimHistory(GlobalState globalState) {
+        _globalState = globalState;
     }
 
     @Override
     protected List<ClaimItem> doInBackground(Integer... integers) {
-        /*
-         * Test method call invocation: listClaims
-         */
+        List<ClaimItem> claimItemList = null;
         publishProgress("Testing method call listClaims...");
         try {
-            List<ClaimItem> claimItemList = WSHelper.listClaims(_sessionId);
+            claimItemList = WSHelper.listClaims(_sessionId);
             if (claimItemList != null) {
                 String m = claimItemList.size() > 0 ? "" : "empty array";
                 for (ClaimItem claimItem : claimItemList ) {
@@ -33,11 +32,17 @@ public class WSClaimHistory extends AsyncTask<Integer, String, List<ClaimItem>> 
             } else {
                 Log.d(TAG, "List claim item result => null.");
             }
-            return claimItemList;
         } catch (Exception e) {
             Log.d(TAG, e.toString());
             publishProgress("failed.\n");
         }
-        return null;
+        return claimItemList;
+    }
+
+    @Override
+    protected void onPostExecute(List<ClaimItem> claimItemList) {
+        super.onPostExecute(claimItemList);
+
+
     }
 }

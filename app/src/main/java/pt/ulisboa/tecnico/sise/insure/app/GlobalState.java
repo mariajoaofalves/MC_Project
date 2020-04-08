@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.ArrayList;
 
 import pt.ulisboa.tecnico.sise.insure.datamodel.ClaimItem;
+import pt.ulisboa.tecnico.sise.insure.datamodel.Customer;
 
 public class GlobalState extends Application {
 
@@ -27,4 +28,12 @@ public class GlobalState extends Application {
     public void set_claimList(ArrayList<ClaimItem> _claimList) {
         this._claimList = _claimList;
     }
+
+    private Customer customer;
+    public Customer getCustomer(){ return customer;}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+
 }

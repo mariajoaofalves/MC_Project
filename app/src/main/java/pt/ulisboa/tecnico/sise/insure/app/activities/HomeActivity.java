@@ -82,16 +82,16 @@ public class HomeActivity extends AppCompatActivity {
                 if (resultCode == Activity.RESULT_OK) {
 
                     // retrieve the title and body of the note from the intent
-                    Integer claimId = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_ID);
+                    //Integer claimId = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_ID);
                     String claimTitle = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE);
                     String claimPlate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_PLATE);
                     String claimDate = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DATE);
                     String claimDescription = data.getStringExtra(InternalProtocol.KEY_NEW_CLAIM_DESC);
 
-                    Log.d(InternalProtocol.LOG, "New Claim:" + claimId + "," + claimTitle);
+                    //Log.d(InternalProtocol.LOG, "New Claim:" + claimId + "," + claimTitle);
 
                     // update the domain data structures
-                    _claimList.add(new ClaimItem(claimId, claimTitle));
+                    //_claimList.add(new ClaimItem(claimId, claimTitle));
 
                     // refresh the list on screen
                     _listView.setAdapter(new ArrayAdapter<>(this,
