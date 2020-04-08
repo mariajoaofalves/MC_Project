@@ -18,12 +18,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 
+import pt.ulisboa.tecnico.sise.insure.app.GlobalState;
 import pt.ulisboa.tecnico.sise.insure.app.InternalProtocol;
+import pt.ulisboa.tecnico.sise.insure.app.WSAuthentication;
+import pt.ulisboa.tecnico.sise.insure.app.WSNewClaim;
 
 public class NewClaimActivity extends AppCompatActivity {
 
 
-    public final static String LOG_TAG = "SISE - NewClaim";
+    public final static String LOG_TAG = "Insure";
     private TextView resultView;
     private Button buttonCreate;
     private Button buttonBack;
@@ -32,19 +35,21 @@ public class NewClaimActivity extends AppCompatActivity {
     EditText editTextDate;
     EditText editTextDesc;
     DatePickerDialog datePickerDialog;
-    AlertDialog.Builder builder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_claim);
 
+        final GlobalState globalState = (GlobalState) getApplicationContext();
+
         buttonCreate = (Button) findViewById(R.id.new_claim_btn_create);
         editTextTitle = (EditText) findViewById(R.id.new_claim_title);
         editTextPlate = (EditText) findViewById(R.id.new_claim_plate);
         editTextDate = (EditText) findViewById(R.id.new_claim_date);
         editTextDesc = (EditText) findViewById(R.id.new_claim_desc);
-        builder = new AlertDialog.Builder(this);
+
 
         editTextDate.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -73,8 +78,7 @@ public class NewClaimActivity extends AppCompatActivity {
         buttonCreate.setOnClickListener(new View.OnClickListener() {
             //    Bundle bundle = new Bundle();
             public void onClick(View v) {
-                Log.d(LOG_TAG, "Button Create debug message");
-                Log.d(LOG_TAG, editTextTitle.getText().toString());
+                Log.d(LOG_TAG, "Create Button Clicked");
                 String claimTitle = editTextTitle.getText().toString();
                 String claimPlate = editTextPlate.getText().toString();
                 String claimDate = editTextDate.getText().toString();
@@ -101,26 +105,13 @@ public class NewClaimActivity extends AppCompatActivity {
                 }
 
                 // return an intent containing the title and body of the new note
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, claimTitle);
-                resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESC, claimDesc);
-                setResult(Activity.RESULT_OK, resultIntent);
+                //Intent resultIntent = new Intent();
+                //resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_TITLE, claimTitle);
+                //resultIntent.putExtra(InternalProtocol.KEY_NEW_CLAIM_DESC, claimDesc);
+                //setResult(Activity.RESULT_OK, resultIntent);
 
-                builder.setMessage("Your claim was successfully created! We will take care of it as soon as possible" + "\n" + claimTitle)
-                        .setCancelable(false)
-                        .setNegativeButton("Back", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //  Action for 'BACK' Button
-                                dialog.cancel();
-                                Intent intent = new Intent(NewClaimActivity.this, ClaimHistoryActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-                //Creating dialog box
-                AlertDialog alert = builder.create();
-                //Setting the title manually
-                alert.setTitle("New Insurance Claim Creation");
-                alert.show();
+                new WSNewClaim(claimTitle, claimDate, claimPlate, claimDesc, globalState, NewClaimActivity.this).execute();
+                Log.d("batata", "Login result => " + claimDate);
 
             }
 
@@ -131,7 +122,7 @@ public class NewClaimActivity extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Insure", "Logout Button Clicked");
+                Log.d(LOG_TAG, "Logout Button Clicked");
                 Toast.makeText(v.getContext(), "Logout Successful!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NewClaimActivity.this, AuthenticationActivity.class);
                 startActivity(intent);
@@ -143,7 +134,7 @@ public class NewClaimActivity extends AppCompatActivity {
         new_claim_btn_back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Log.d("Insure", "Back Button Clicked");
+                Log.d(LOG_TAG, "Back Button Clicked");
                 Intent intent = new Intent(NewClaimActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

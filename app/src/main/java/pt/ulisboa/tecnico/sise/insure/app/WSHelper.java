@@ -59,7 +59,7 @@ public class WSHelper {
         return sessionID;
     }
 
-    /*public static Customer getCustomerInfo(int sessionId) throws Exception {
+    public static Customer getCustomerInfo(int sessionId) throws Exception {
         final String METHOD_NAME = "getCustomerInfo";
         String jsonResult = makeRequest(METHOD_NAME, sessionId+"");     // add "" to convert int to String
         try {
@@ -172,7 +172,7 @@ public class WSHelper {
         final String METHOD_NAME = "submitNewMessage";
         String res = makeRequest(METHOD_NAME, sessionId+"", claimId+"", message);
         return res != null && res.toString().equals("true");
-    }*/
+    }
 
     public static boolean logout(int sessionId) throws Exception {
         final String METHOD_NAME = "logout";

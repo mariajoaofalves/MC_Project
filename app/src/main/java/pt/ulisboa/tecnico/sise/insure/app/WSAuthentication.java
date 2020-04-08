@@ -34,7 +34,6 @@ public class WSAuthentication extends AsyncTask<String, String, Integer> {
         } catch (Exception e) {
             Log.d("Login", e.toString());
         }
-        Log.d("batata","Login result => " + sessionId);
         return sessionId;
     }
 
@@ -46,7 +45,6 @@ public class WSAuthentication extends AsyncTask<String, String, Integer> {
             Intent intent = new Intent(_login.getApplicationContext(), HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             _login.getApplicationContext().startActivity(intent);
-            //((Activity) _login.getApplicationContext() ).finish();
         }else if(sessionId==0){
             Toast.makeText(_login.getApplicationContext(), "Login Failed! Wrong Password or Username! Please Try Again.", Toast.LENGTH_SHORT).show();
         } else{

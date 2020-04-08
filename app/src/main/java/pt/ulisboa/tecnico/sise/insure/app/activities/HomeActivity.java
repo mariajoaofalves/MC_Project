@@ -44,8 +44,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Perform action on click
                 Log.d("Insure", "New Insurance Claim Button Clicked");
-                Toast.makeText(newinsuranceclaim_button.getContext(), "Login Successful!", Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent(HomeActivity.this, NewClaimActivity.class);
                 startActivity(intent);
             }
